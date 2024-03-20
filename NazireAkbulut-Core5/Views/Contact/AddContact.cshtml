@@ -1,0 +1,71 @@
+﻿
+<form class="contact-form" method="post" asp-action="AddContact" asp-controller="Contact">
+
+    <div class="messages"></div>
+
+    <div class="row">
+        <div class="column col-md-6">
+            <!-- Name input -->
+            <div class="form-group">
+                <input type="text" class="form-control" name="Name" placeholder="Adınız" required="required" data-error="Name is required.">
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+
+        <div class="column col-md-6">
+            <!-- Name input -->
+            <div class="form-group">
+                <input type="text" class="form-control" name="Surname" placeholder="Soyadınız" required="required" data-error="Name is required.">
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+
+        <div class="column col-md-6">
+            <!-- Email input -->
+            <div class="form-group">
+                <input type="email" class="form-control" name="Email" placeholder="Mail Adresiniz" required="required" data-error="Email is required.">
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+
+        <div class="column col-md-6">
+            <!-- Email input -->
+            <div class="form-group">
+                <input type="text" class="form-control" name="Subject" placeholder="Konu" required="required" data-error="Subject is required.">
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+
+        <div class="column col-md-12">
+            <!-- Message textarea -->
+            <div class="form-group">
+                <textarea name="Message" class="form-control" rows="4" placeholder="Mesajınız..." required="required" data-error="Message is required."></textarea>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+
+        <div class="column col-md-6">
+            <!-- captcha input -->
+            <dnt-captcha asp-captcha-generator-max="999999"
+                         asp-captcha-generator-min="111111"
+                         asp-captcha-generator-language="English"
+                         asp-captcha-generator-display-mode="ShowDigits"
+                         asp-use-relative-urls="true"
+                         asp-placeholder="Doğrulamayı Giriniz"
+                         asp-font-name="Tahoma"
+                         asp-font-size="20"
+                         asp-fore-color="#333333"
+                         asp-back-color="#ccc"
+                         asp-text-box-class="text-box form-control"
+                         asp-text-box-template="<span class='input-group-prepend'><span class='form-group-text'></span></span>{0}"
+                         asp-validation-error-message="Lütfen doğrulama kodunu giriniz"
+                         asp-validation-message-class="text-danger"
+                         asp-use-noise="false">
+
+            </dnt-captcha>
+        </div>
+    </div>
+
+    <button type="submit" name="submit" id="submit" value="Submit" class="btn btn-default mt-3">Mesajı Gönder</button><!-- Send Button -->
+
+</form>

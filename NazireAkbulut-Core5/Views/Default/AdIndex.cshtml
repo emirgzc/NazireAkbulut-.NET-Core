@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "AdIndex";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    
+    @* toplam yayındaki yazı sayısı *@
+    @await Component.InvokeAsync("MyWriteCount")
+
+    @* toplam yayında olmayan yazı sayısı *@
+    @await Component.InvokeAsync("MyWriteFalseCount")
+
+    @* toplam kategori sayısı *@
+    @await Component.InvokeAsync("CategoryCount")
+    
+</div>
+
+<div class="row">
+
+    @* toplam yazar sayısı *@
+    @await Component.InvokeAsync("WriterCount")
+
+    @* toplam onaylanan yorum sayısı *@
+    @await Component.InvokeAsync("CommentCount")
+
+    @* toplam onaylanmayan yorum sayısı *@
+    @await Component.InvokeAsync("CommentFalseCount")  
+    
+</div>
+<div class="row">
+    @* toplam gelen mesaj sayısı *@
+    @await Component.InvokeAsync("ContactCount")
+    
+    @* toplam yayındaki dosyalar sayısı *@
+    @await Component.InvokeAsync("FileNazireCount")
+    
+    @* toplam yayında olmayan dosyalar sayısı *@
+    @await Component.InvokeAsync("FileNazireFalseCount")
+</div>

@@ -1,0 +1,66 @@
+﻿@model List<YukLisDokJuri>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_AnaLayout.cshtml";
+}
+
+<section class="main-content">
+	<div class="container-xl">
+
+		<div class="row gy-4">
+
+			<div class="col-lg-8">
+
+				<div class="row gy-4">
+
+
+					<img src="~/katen/html/images/logo/nazireakbulut1.jpeg" alt="Nazire Akbulut" class="rounded mb-4" style="height:350px; object-fit:cover;" />
+
+					@foreach (var item in Model)
+					{
+						<div class="col-sm-6">
+
+							<div class="post post-grid rounded bordered">
+
+								<div class="details">
+									<h5 class="post-title mb-3 mt-3"><a href="#">@item.Title</a></h5>
+
+									@if (item.ShortContent.Length < 150)
+									{
+										<p class="excerpt mb-0">@Html.Raw(item.ShortContent)</p>
+									}
+									else
+									{
+										<p class="excerpt mb-0">@Html.Raw(item.ShortContent.Substring(0, 150)) [...]</p>
+									}
+								</div>
+
+							</div>
+						</div>
+					}
+
+				</div>
+
+			</div>
+
+			<div class="col-lg-4">
+
+				<!-- sidebar -->
+				<div class="sidebar">
+					<!-- widget about -->
+					@await Component.InvokeAsync("SocialMediaWithAboutInHome")
+
+					<!-- widget popular posts -->
+					@await Component.InvokeAsync("MyWriteLastPostRightBar")
+
+					<!-- widget categories -->
+					@await Component.InvokeAsync("CategoriListForHomeRightBar")
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+

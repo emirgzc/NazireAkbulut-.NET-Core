@@ -1,0 +1,48 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+@model IPagedList<Contact>
+
+@{
+	ViewData["Title"] = "AdContactList";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-lg-12">
+	<div class="card">
+		<div class="card-body">
+			<div class="card-title">
+				<h4>Gelen Mesajlar (@Model.Count Adet)</h4>
+			</div>
+			<div class="email-list m-t-15">
+				@foreach (var item in Model)
+				{
+					<div class="message">
+						<a href="/Contact/AdContactDetail/@item.ContactId">
+							<div class="col-mail col-mail-2">
+								<div class="subject"><strong>@item.Name @item.Surname</strong> - @item.Message</div>
+								<div class="date">@(((DateTime)item.ContactDate).ToString("dd MMMM yyyy"))</div>
+							</div>
+						</a>
+					</div>
+				}
+			</div>
+			<!-- panel -->
+			<div class="bootstrap-pagination">
+				@* pagination *@
+				<nav>
+					<ul class="pagination justify-content-center">
+						@Html.PagedListPager((IPagedList)Model, page => Url.Action("AdContactList", new { page = page }),
+															new PagedListRenderOptions
+						{
+							LiElementClasses = new string[] { "page-item" },
+							PageClasses = new string[] { "page-link" }
+						})
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+

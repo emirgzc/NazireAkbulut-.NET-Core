@@ -1,0 +1,9 @@
+﻿
+@model List<SocialMedia>
+
+<ul class="social-icons list-unstyled list-inline mb-0">
+	@foreach (var item in Model)
+	{
+		<li class="list-inline-item"><a href="@item.Link"><i class="@item.Icon"></i></a></li>
+	}
+</ul>

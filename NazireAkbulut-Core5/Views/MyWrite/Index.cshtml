@@ -1,0 +1,135 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+@model IPagedList<MyWrite>
+
+
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_AnaLayout.cshtml";
+}
+
+<section class="page-header">
+	<div class="container-xl">
+		<div class="text-center">
+			<h1 class="mt-0 mb-2">@ViewBag.categoryName</h1>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb justify-content-center mb-0">
+					<li class="breadcrumb-item"><a href="/Default/Index/">Ana Sayfa</a></li>
+					<li class="breadcrumb-item active" aria-current="page">@ViewBag.categoryName</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+</section>
+
+
+<!-- section main content -->
+<section class="main-content">
+	<div class="container-xl">
+
+		<div class="row gy-4">
+			@if (Model.Count != 0)
+			{
+				<div class="col-lg-8">
+
+					<div class="row gy-4">
+						@foreach (var item in Model)
+						{
+							<div class="col-sm-6">
+								<!-- post -->
+								<div class="post post-grid rounded bordered">
+									<div class="thumb top-rounded">
+										<a href="/MyWrite/Index/@item.CategoriId" class="category-badge position-absolute">@item.Categori.CategoriTitle</a>
+										<span class="post-format">
+											<i class="icon-picture"></i>
+										</span>
+										<a href="/MyWrite/MyWriteDetail/@item.MyWriteId">
+											<div class="inner">
+												<img src="@item.Image" alt="Nazire Akbulut" style="height:300px; width:-webkit-fill-available; object-fit:cover;" />
+											</div>
+										</a>
+									</div>
+
+									<div class="details">
+										<ul class="meta list-inline mb-0">
+											<li class="list-inline-item">
+												<a href="/Writer/Index/@item.WriterId">
+													<img src="@item.Writer.Image" class="author" alt="Nazire Akbulut" style="height:30px; width:30px; object-fit:cover; border-radius:50px;" />
+													@item.Writer.Name @item.Writer.Surname
+												</a>
+											</li>
+											<li class="list-inline-item">@(((DateTime)item.AddDate).ToString("dd MMMM yyyy"))</li>
+										</ul>
+										<h5 class="post-title mb-3 mt-3"><a href="/MyWrite/MyWriteDetail/@item.MyWriteId">@item.Title</a></h5>
+
+									</div>
+
+									<div class="post-bottom clearfix d-flex align-items-center">
+
+										<div class="more-button float-end">
+											<a href="/MyWrite/MyWriteDetail/@item.MyWriteId">
+												Devamını Oku
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						}
+					</div>
+
+
+
+					@* pagination *@
+					<nav>
+						<ul class="pagination justify-content-center">
+							@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page = page }),
+																new PagedListRenderOptions
+						{
+							LiElementClasses = new string[] { "page-item" },
+							PageClasses = new string[] { "page-link" }
+						})
+						</ul>
+					</nav>
+
+				</div>
+			}
+			else
+			{
+				<div class="col-lg-8">
+					<div class="post post-classic rounded bordered">
+						<div class="thumb top-rounded">
+							<div class="inner">
+								<img src="~/katen/html/images/logo/logo-bg.png" alt="Nazire Akbulut" />
+							</div>
+						</div>
+						<div class="details" style="padding:20px 20px;">
+							<h4 class="mb-1 mt-1">
+								<a href="#">Eklenmiş Veri yok</a>
+							</h4>
+						</div>
+					</div>
+				</div>
+			}
+			<div class="col-lg-4">
+				<!-- sidebar -->
+				<div class="sidebar">
+					<!-- widget about -->
+					@await Component.InvokeAsync("SocialMediaWithAboutInHome")
+
+					<!-- widget popular posts -->
+					@await Component.InvokeAsync("MyWriteLastPostRightBar")
+
+					<!-- widget categories -->
+					@await Component.InvokeAsync("CategoriListForHomeRightBar")
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</section>
+
+

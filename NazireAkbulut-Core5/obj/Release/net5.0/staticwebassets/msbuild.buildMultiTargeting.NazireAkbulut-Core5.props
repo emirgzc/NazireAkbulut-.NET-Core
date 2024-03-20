@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\NazireAkbulut-Core5.props" />
+</Project>

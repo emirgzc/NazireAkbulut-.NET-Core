@@ -1,0 +1,14 @@
+﻿
+@model List<FileType>
+
+<li>
+	<a href="#">Kariyer</a>
+	<ul class="submenu">
+		@foreach (var item in Model)
+		{
+			<li><a href="/FileNazire/Index/@item.FileTypeId">@item.FileTypeTitle</a></li>
+		}
+		<li><a href="/YukLisDokUye/Index/">YÜKSEK LİSANS VE DOKTORA JURİ ÜYELİĞİ</a></li>
+		<li><a href="/MesKurUye/Index/">MESLEKİ KURULUŞLARA ÜYELİKLER</a></li>
+	</ul>
+</li>

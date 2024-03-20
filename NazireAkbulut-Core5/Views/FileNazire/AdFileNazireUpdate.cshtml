@@ -1,0 +1,49 @@
+﻿@model FileNazireUpdateModel
+
+@{
+	ViewData["Title"] = "AdFileNazireUpdate";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Dosya Güncelleme</h4>
+				<div class="basic-form">
+					<form method="post" enctype="multipart/form-data" asp-controller="FileNazire" asp-action="AdFileNazireUpdate">
+						<input type="hidden" asp-for="FileNazireId">						
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								@Html.Label("Dosya Tipi")
+								@Html.DropDownListFor(x => x.FileTypeId, (List<SelectListItem>)ViewBag.filTyValue, new { @class = "form-control" })
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Dosya Tanımı</label>
+							<textarea asp-for="FileDescription" class="form-control h-150px" rows="6" id="editorid"></textarea>
+						</div>
+						<div class="form-group">
+							<label>Dosya</label>V
+							<div class="input-group">
+								<div class="custom-file">
+									<input type="file" asp-for="File" class="custom-file-input">
+									<label class="custom-file-label">Dosya Seç</label>
+								</div>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-dark">Güncelle</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+	<script src="~/admin/theme/plugins/ckeditor/ckeditor.js"></script>
+	<script>
+		CKEDITOR.replace("editorid")
+	</script>
+}

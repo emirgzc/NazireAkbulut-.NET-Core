@@ -1,0 +1,180 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+@model IPagedList<MyWrite>
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Nazire Akbulut ©</title>
+	<meta name="description" content="Nazire Akbulut Resmi Web Sitesi">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" type="image/x-icon" href="~/katen/html/images/logo/logo2.jpeg">
+
+	<!-- STYLES -->
+	<link rel="stylesheet" href="~/katen/html/css/bootstrap.min.css" type="text/css" media="all">
+	<link rel="stylesheet" href="~/katen/html/css/all.min.css" type="text/css" media="all">
+	<link rel="stylesheet" href="~/katen/html/css/slick.css" type="text/css" media="all">
+	<link rel="stylesheet" href="~/katen/html/css/simple-line-icons.css" type="text/css" media="all">
+	<link rel="stylesheet" href="~/katen/html/css/style.css" type="text/css" media="all">
+
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+
+<body>
+
+	<!-- preloader -->
+	<div id="preloader">
+		<div class="book">
+			<div class="inner">
+				<div class="left"></div>
+				<div class="middle"></div>
+				<div class="right"></div>
+			</div>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- site wrapper -->
+	<div class="site-wrapper">
+
+		<div class="main-overlay"></div>
+
+		<!-- header -->
+		@await Component.InvokeAsync("WriterListForWriterPage", new { id = ViewBag.writerId })
+
+		<!-- section main content -->
+		<section class="main-content mt-5">
+			<div class="container-xl">
+
+				<div class="row gy-4">
+
+					<!-- my write list -->
+					<div class="col-lg-8">
+
+						<div class="row gy-4">
+
+							@foreach (var item in Model)
+							{
+								<div class="col-sm-6">
+									<!-- post -->
+									<div class="post post-grid rounded bordered">
+										<div class="thumb top-rounded">
+											<a href="/MyWrite/Index/@item.CategoriId" class="category-badge position-absolute">@item.Categori.CategoriTitle</a>
+											<span class="post-format">
+												<i class="icon-picture"></i>
+											</span>
+											<a href="/MyWrite/MyWriteDetail/@item.MyWriteId">
+												<div class="inner">
+													<img src="@item.Image" alt="Nazire Akbulut" style="height:300px; width:-webkit-fill-available; object-fit:cover;" />
+												</div>
+											</a>
+										</div>
+
+										<div class="details">
+											<ul class="meta list-inline mb-0">
+												<li class="list-inline-item">
+													<a href="/Writer/Index/@item.WriterId">
+														<img src="@item.Writer.Image" class="author" alt="Nazire Akbulut" style="height:30px; width:30px; object-fit:cover; border-radius:50px;" />
+														@item.Writer.Name @item.Writer.Surname
+													</a>
+												</li>
+												<li class="list-inline-item">@(((DateTime)item.AddDate).ToString("dd MMMM yyyy"))</li>
+											</ul>
+											<h5 class="post-title mb-3 mt-3"><a href="/MyWrite/MyWriteDetail/@item.MyWriteId">@item.Title</a></h5>
+
+										</div>
+
+										<div class="post-bottom clearfix d-flex align-items-center">
+
+											<div class="more-button float-end">
+												<a href="/MyWrite/MyWriteDetail/@item.MyWriteId">
+													Devamını Oku
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							}
+
+						</div>
+
+						@* pagination *@
+						<nav>
+							<ul class="pagination justify-content-center">
+								@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page = page }),
+																	new PagedListRenderOptions
+								{
+									LiElementClasses = new string[] { "page-item" },
+									PageClasses = new string[] { "page-link" }
+								})
+							</ul>
+						</nav>
+
+					</div>
+
+					<div class="col-lg-4">
+
+						<!-- sidebar -->
+						<!-- widget about -->
+						@await Component.InvokeAsync("SocialMediaWithAboutInHome")
+
+						<!-- widget categories -->
+						@await Component.InvokeAsync("CategoriListForHomeRightBar")
+
+						<!-- file type list -->
+						@await Component.InvokeAsync("FileTypeListRightBar")
+
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+
+		@await Html.PartialAsync("~/Views/AnaLayoutPartial/_FooterPartial.cshtml")
+
+	</div><!-- end site wrapper -->
+	@* @await Html.PartialAsync("~/Views/AnaLayoutPartial/_SearchPopUpPartial.cshtml") *@
+
+	<!-- canvas menu -->
+	@await Html.PartialAsync("~/Views/AnaLayoutPartial/_CanvasMenuPartial.cshtml")
+
+	<!-- JAVA SCRIPTS -->
+	<script src="~/katen/html/js/jquery.min.js"></script>
+	<script src="~/katen/html/js/popper.min.js"></script>
+	<script src="~/katen/html/js/bootstrap.min.js"></script>
+	<script src="~/katen/html/js/slick.min.js"></script>
+	<script src="~/katen/html/js/jquery.sticky-sidebar.min.js"></script>
+	<script src="~/katen/html/js/custom.js"></script>
+
+</body>
+</html>

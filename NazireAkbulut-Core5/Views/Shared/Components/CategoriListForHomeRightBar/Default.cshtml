@@ -1,0 +1,19 @@
+﻿
+
+@model List<Categori>
+
+<div class="widget rounded">
+	<div class="widget-header text-center">
+		<h3 class="widget-title">Kategoriler</h3>
+		<img src="~/katen/html/images/wave.svg" class="wave" alt="Nazire Akbulut" />
+	</div>
+	<div class="widget-content">
+		<ul class="list">
+			@foreach (var item in Model)
+			{
+				<li><a href="/MyWrite/Index/@item.CategoriId">@item.CategoriTitle</a></li>
+			}
+		</ul>
+	</div>
+
+</div>

@@ -1,0 +1,47 @@
+﻿@model List<AppUser>
+
+@{
+	ViewData["Title"] = "AdUserList";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	int sayac = 1;
+}
+
+<div class="col-lg-12">
+	<a href="/AppUser/AdUserAdd/" class="btn btn-success mb-3">Yeni Admin Ekle</a>
+
+	<div class="card">
+		<div class="card-body">
+			<div class="card-title">
+				<h4>Adminler</h4>
+			</div>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>İsmi Soyisim</th>
+							<th>Kullanıcı Adı</th>
+							<th>Mail Adresi</th>
+							<th>Güncelle</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in Model)
+						{
+							<tr>
+								<th>@sayac</th>
+								<td>@item.Name @item.Surname</td>
+								<td>@item.UserName</td>
+								<td>@item.Email</td>						
+								<td>
+									<a href="/AppUser/AdAppUserUpdate/@item.Id" class="btn btn-warning">Güncelle</a>
+								</td>
+							</tr>
+							sayac++;
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

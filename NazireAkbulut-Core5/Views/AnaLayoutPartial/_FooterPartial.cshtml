@@ -1,0 +1,28 @@
+﻿
+<footer>
+	<div class="container-xl">
+		<div class="footer-inner">
+			<div class="row d-flex align-items-center gy-4">
+				<!-- copyright text -->
+				<div class="col-md-6">
+					<span class="copyright">@DateTime.Now.Year Nazire Akbulut ©. Tüm Hakları Saklıdır. Tasarım ve Geliştirme <a href="#">Emir Gözcü</a></span>
+				</div>
+
+				<!-- social icons -->
+				<div class="col-md-2 text-center">
+					@await Component.InvokeAsync("SocialMediaListForPublic")
+				</div>
+
+				<div class="col-md-2">
+					<a href="https://nazireakbulut.com/katen/html/uyari.pdf" id="" class="float-md-end"><i class="icon-info"></i> Uyarı</a>
+				</div>
+
+				<!-- go to top button -->
+				<div class="col-md-2">
+					<a href="#" id="return-to-top" class="float-md-end"><i class="icon-arrow-up mr-2"></i>Yukarıya Çık</a>
+				</div>			
+				
+			</div>
+		</div>
+	</div>
+</footer>

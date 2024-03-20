@@ -1,0 +1,57 @@
+﻿
+
+@model List<About>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AnaLayout.cshtml";
+}
+
+<section class="main-content">
+	<div class="container-xl">
+
+		<div class="row gy-4">
+
+			<div class="col-lg-8">
+
+				<div class="page-content bordered rounded padding-30">
+
+					@foreach (var item in Model)
+					{
+						<img src="@item.AboutImage" alt="Nazire Akbulut" class="rounded mb-4" style="object-fit:cover; width:-webkit-fill-available; height:450px;" />
+
+						<h3 class="title mt-0 mb-3">@item.AboutTitle</h3>
+
+						<p>@Html.Raw(item.AboutDescription)</p>
+					}
+
+					<hr class="my-4" />
+
+					@await Component.InvokeAsync("SocialMediaListForPublic")
+
+				</div>				
+
+			</div>
+			
+			<div class="col-lg-4">
+
+				<!-- sidebar -->
+				<div class="sidebar">
+					<!-- widget about -->
+					@await Component.InvokeAsync("SocialMediaWithAboutInHome")
+
+					<!-- widget popular posts -->
+					@await Component.InvokeAsync("MyWriteLastPostRightBar")
+
+					<!-- widget categories -->
+					@await Component.InvokeAsync("CategoriListForHomeRightBar")
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</section>
+

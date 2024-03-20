@@ -1,0 +1,74 @@
+﻿
+
+
+<div class="section-header">
+	<h3 class="section-title">Bir Yorum Bırakın</h3>
+	<img src="~/katen/html/images/wave.svg" class="wave" alt="Nazire Akbulut" />
+</div>
+<!-- comment form -->
+<div class="comment-form rounded bordered padding-30">
+
+	<form class="comment-form" method="post" asp-action="AddComment" asp-controller="Comment">
+
+		<div class="messages"></div>
+
+		<div class="row">
+
+			<div class="column col-md-12">
+				<!-- Comment textarea -->
+				<input type="hidden" name="MyWriteId" value="@ViewBag.myWriteId" />
+
+				<div class="form-group">
+					<textarea name="Content" class="form-control" rows="4" placeholder="Yorumunuz..." required="required"></textarea>
+				</div>
+			</div>
+
+			<div class="column col-md-12">
+				<!-- Email input -->
+				<div class="form-group">
+					<input type="email" class="form-control" name="Email" placeholder="Mail Adresiniz" required="required">
+				</div>
+			</div>
+
+			<div class="column col-md-6">
+				<!-- Name input -->
+				<div class="form-group">
+					<input type="text" class="form-control" name="Name" placeholder="İsim" required="required">
+				</div>
+			</div>
+
+			<div class="column col-md-6">
+				<!-- Email input -->
+				<div class="form-group">
+					<input type="text" class="form-control" name="Surname" placeholder="Soyisim" required="required">
+				</div>
+			</div>
+
+			<div class="column col-md-6">
+				<!-- captcha input -->
+				<dnt-captcha asp-captcha-generator-max="999999"
+							 asp-captcha-generator-min="111111"
+							 asp-captcha-generator-language="English"
+							 asp-captcha-generator-display-mode="ShowDigits"
+							 asp-use-relative-urls="true"
+							 asp-placeholder="Doğrulamayı Giriniz"
+							 asp-font-name="Tahoma"
+							 asp-font-size="20"
+							 asp-fore-color="#333333"
+							 asp-back-color="#ccc"
+							 asp-text-box-class="text-box form-control"
+							 asp-text-box-template="<span class='input-group-prepend'><span class='form-group-text'></span></span>{0}"
+							 asp-validation-error-message="Lütfen doğrulama kodunu giriniz"
+							 asp-validation-message-class="text-danger"
+							 asp-use-noise="false"
+							 >
+
+				</dnt-captcha>
+			</div>
+
+		</div>
+
+		<button type="submit" name="submit" id="submit" value="Submit" class="btn btn-default mt-3">Gönder</button>
+
+	</form>
+</div>

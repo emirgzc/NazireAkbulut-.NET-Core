@@ -1,0 +1,98 @@
+﻿
+@model List<SiteSetting>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AnaLayout.cshtml";
+}
+
+
+<section class="page-header">
+    <div class="container-xl">
+        <div class="text-center">
+            <h1 class="mt-0 mb-2">İletişim</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="/Default/Index/">Ana Sayfa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">İletişim</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<!-- section main content -->
+<section class="main-content">
+    <div class="container-xl">
+        @if (TempData["AlertMessage"] != null)
+        {
+            if (TempData["alertType"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["AlertMessage"]
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger">
+                    @TempData["AlertMessage"]
+                </div>
+            }
+        }
+
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <!-- contact info item -->
+                    <div class="contact-item bordered rounded d-flex align-items-center">
+                        <span class="icon icon-phone"></span>
+                        <div class="details">
+                            <h3 class="mb-0 mt-0">Telefon Numarası</h3>
+                            <p class="mb-0">@item.Phone</p>
+                        </div>
+                    </div>
+                    <div class="spacer d-md-none d-lg-none" data-height="30"></div>
+                </div>
+
+                <div class="col-md-4">
+                    <!-- contact info item -->
+                    <div class="contact-item bordered rounded d-flex align-items-center">
+                        <span class="icon icon-envelope-open"></span>
+                        <div class="details">
+                            <h3 class="mb-0 mt-0">Mail Adresi</h3>
+                            <p class="mb-0">@item.EmailAddress</p>
+                        </div>
+                    </div>
+                    <div class="spacer d-md-none d-lg-none" data-height="30"></div>
+                </div>
+
+                <div class="col-md-4">
+                    <!-- contact info item -->
+                    <div class="contact-item bordered rounded d-flex align-items-center">
+                        <span class="icon icon-map"></span>
+                        <div class="details">
+                            <h3 class="mb-0 mt-0">Konum</h3>
+                            <p class="mb-0">@item.City, @item.Country</p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        <div class="spacer" data-height="50"></div>
+
+        <!-- section header -->
+        <div class="section-header">
+            <h3 class="section-title">İletişime Geçin </h3>
+            <img src="~/katen/html/images/wave.svg" class="wave" alt="Nazire Akbulut" />
+        </div>
+
+        <!-- Contact Form -->
+        @await Html.PartialAsync("~/Views/Contact/AddContact.cshtml")
+        <!-- Contact Form end -->
+    </div>
+</section>
+

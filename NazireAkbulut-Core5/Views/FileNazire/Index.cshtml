@@ -1,0 +1,61 @@
+﻿@model List<FileNazire>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_AnaLayout.cshtml";
+}
+
+<section class="main-content">
+	<div class="container-xl">
+
+		<div class="row gy-4">
+
+			<div class="col-lg-8">
+				<div class="post post-classic rounded bordered">
+
+					<div class="thumb top-rounded">
+						<a href="#" class="category-badge lg position-absolute">Dosya</a>
+						<span class="post-format">
+							<i class="icon-picture"></i>
+						</span>
+						<a href="#">
+							<div class="inner">
+								<img src="~/katen/html/images/logo/nazireakbulut.jpeg" style="object-fit:cover; width:-webkit-fill-available; height:250px;"
+									 alt="Nazire Akbulut" />
+							</div>
+						</a>
+					</div>
+					@foreach (var item in Model)
+					{
+						<div class="details">
+							<h5 class="post-title mb-3 mt-2"><a href="@item.File">@item.FileType.FileTypeTitle</a></h5>
+							<p class="excerpt mb-0">@Html.Raw(item.FileDescription)</p>
+						</div>
+						<div class="post-bottom clearfix d-flex align-items-center">
+							<div class="social-share me-auto">
+								@await Component.InvokeAsync("SocialMediaListForPublic")
+							</div>
+							<div class="float-end d-none d-md-block">
+								<a href="@item.File" class="more-link">Dosyayı İncele<i class="icon-arrow-right"></i></a>
+							</div>
+						</div>
+					}
+
+				</div>
+
+			</div>
+
+			<div class="col-lg-4">
+
+				<!-- sidebar -->
+				<div class="sidebar">
+					<!-- widget about -->
+					@await Component.InvokeAsync("FileTypeListRightBar")
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</section>

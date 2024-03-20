@@ -1,0 +1,30 @@
+﻿
+<section id="hero">
+	<div class="container-xl">
+		<div class="row gy-4">
+			<div class="col-lg-8">
+				<!-- featured post large -->
+				@await Component.InvokeAsync("MyWriteHomePageLastBig")
+			</div>
+			<div class="col-lg-4">
+				<!-- post tabs -->
+				<div class="post-tabs rounded bordered">
+					<!-- tab navs -->
+					<ul class="nav nav-tabs nav-pills nav-fill" id="postsTab" role="tablist">
+						<li class="nav-item" role="presentation"><button aria-controls="popular" aria-selected="true" class="nav-link active" data-bs-target="#popular" data-bs-toggle="tab" id="popular-tab" role="tab" type="button">Popüler</button></li>
+						<li class="nav-item" role="presentation"><button aria-controls="recent" aria-selected="false" class="nav-link" data-bs-target="#recent" data-bs-toggle="tab" id="recent-tab" role="tab" type="button">Son</button></li>
+					</ul>
+					<!-- tab contents -->
+					<div class="tab-content" id="postsTabContent">
+						<!-- loader -->
+						<div class="lds-dual-ring"></div>
+						<!-- popular posts -->
+						@await Component.InvokeAsync("MyWriteListToHomePagePopular")
+						<!-- recent posts -->
+						@await Component.InvokeAsync("MyWriteListToHomePageLast")
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

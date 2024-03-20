@@ -1,0 +1,21 @@
+﻿@model List<FileType>
+
+<div class="widget rounded">
+	<div class="widget-header text-center">
+		<h3 class="widget-title">Kariyer</h3>
+		<img src="~/katen/html/images/wave.svg" class="wave" alt="Nazire Akbulut" />
+	</div>
+	<div class="widget-content">
+		<ul class="list">
+			@foreach (var item in Model)
+			{
+				<li><a href="/FileNazire/Index/@item.FileTypeId">@item.FileTypeTitle</a></li>
+			}
+
+			<li><a href="/YukLisDokUye/Index/">YÜKSEK LİSANS VE DOKTORA JÜRİ ÜYELİĞİ</a></li>
+
+			<li><a href="/MesKurUye/Index/">MESLEKİ KURULUŞLARA ÜYELİKLER</a></li>
+		</ul>
+	</div>
+
+</div>

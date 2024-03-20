@@ -1,0 +1,160 @@
+﻿@model List<MyWrite>
+
+@{
+	ViewData["Title"] = "MyWriteDetail";
+	Layout = "~/Views/Shared/_AnaLayout.cshtml";
+
+	string[] tagsArray;	
+}
+
+<section class="main-content mt-3">
+	<div class="container-xl">
+
+		@if (TempData["AlertMessage"] != null)
+		{
+			if (TempData["alertType"] != null)
+			{
+				<div class="alert alert-success">
+					@TempData["AlertMessage"]
+				</div>
+			}
+			else
+			{
+				<div class="alert alert-danger">
+					@TempData["AlertMessage"]
+				</div>
+			}
+		}
+
+		@foreach (var item in Model)
+		{
+			//tag ayırma işlemi
+			tagsArray = item.Tags.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+			List<string> tagsList = new List<string>(tagsArray);
+
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/Default/Index/">Ana Sayfa</a></li>
+					<li class="breadcrumb-item"><a href="/MyWrite/Index/@item.CategoriId">@item.Categori.CategoriTitle</a></li>
+					<li class="breadcrumb-item active" aria-current="page">@item.Title</li>
+				</ol>
+			</nav>
+
+			<div class="row gy-4">
+
+				<div class="col-lg-8">
+					<!-- post single -->
+					<div class="post post-single">
+						<!-- post header -->
+						<div class="post-header">
+							<h1 class="title mt-0 mb-3">@item.Title</h1>
+							<ul class="meta list-inline mb-0">
+								<li class="list-inline-item">
+									<a href="/Writer/Index/@item.WriterId">
+										<img src="@item.Writer.Image" class="author" alt="Nazire Akbulut" style="height:30px; width:30px; object-fit:cover; border-radius:50px;" />
+										@item.Writer.Name @item.Writer.Surname
+									</a>
+								</li>
+								<li class="list-inline-item">
+									<a href="/MyWrite/Index/@item.CategoriId">@item.Categori.CategoriTitle</a>
+								</li>
+								<li class="list-inline-item">@(((DateTime)item.AddDate).ToString("dd MMMM yyyy"))</li>
+							</ul>
+						</div>
+						<!-- featured image -->
+						<div class="featured-image">
+							<img src="@item.Image" alt="Nazire Akbulut" style="height:500px; width:-webkit-fill-available; object-fit:cover;" />
+						</div>
+						<!-- post content -->
+						<div class="post-content clearfix">
+
+							<p>@Html.Raw(item.Description)</p>
+
+						</div>
+						<!-- post bottom section -->
+						<div class="post-bottom">
+							<div class="row d-flex align-items-center">
+								<div class="col-md-6 col-12 text-center text-md-start">
+									<!-- tags -->
+									@foreach (var tag in tagsList)
+									{
+										<a href="#" class="tag">#@tag</a>
+									}
+								</div>
+								<div class="col-md-6 col-12">
+									<!-- social icons -->
+									@await Component.InvokeAsync("SocialMediaListForPublic")
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="spacer" data-height="50"></div>
+
+					<div class="about-author padding-30 rounded">
+
+						<div class="thumb">
+							<img src="@item.Writer.Image" alt="Nazire Akbulut" />
+						</div>
+						<div class="details">
+							<h4 class="name">
+								<a href="/Writer/Index/@item.WriterId">@item.Writer.Name @item.Writer.Surname</a>
+							</h4>
+							<p>@Html.Raw(item.Writer.ShortTrailer)</p>
+							<!-- social icons -->
+							<ul class="social-icons list-unstyled list-inline mb-0">
+								<li class="list-inline-item"><a href="@item.Writer.FacebookLink"><i class="fab fa-facebook-f"></i></a></li>
+								<li class="list-inline-item"><a href="@item.Writer.TwitterLink"><i class="fab fa-twitter"></i></a></li>
+								<li class="list-inline-item"><a href="@item.Writer.InstagramLink"><i class="fab fa-instagram"></i></a></li>
+								<li class="list-inline-item"><a href="@item.Writer.LinkedinLink"><i class="fab fa-linkedin"></i></a></li>
+								<li class="list-inline-item"><a href="@item.Writer.YoutubeLink"><i class="fab fa-youtube"></i></a></li>
+							</ul>
+						</div>
+
+					</div>
+
+
+					<div class="spacer" data-height="50"></div>
+
+					<!-- section header -->
+					@await Component.InvokeAsync("CommentListMyWriteDetails", new { id = item.MyWriteId })
+
+					<div class="spacer" data-height="50"></div>
+
+					<!-- comment section header -->
+					@await Html.PartialAsync("~/Views/Comment/AddComment.cshtml")
+
+					<div class="spacer" data-height="50"></div>
+
+					@await Component.InvokeAsync("MyWriteListForDetailWithCategori", new { id = item.CategoriId })
+				</div>
+
+				<div class="col-lg-4">
+
+					<div class="sidebar">
+						<!-- widget about -->
+						@await Component.InvokeAsync("WriterGetByMyWriter", new { id = item.WriterId })
+
+						<!-- widget post carousel -->
+						@await Component.InvokeAsync("MyWriteListHomePageWithCategory5", new { catId = 5 })
+
+						<!-- widget categories -->
+						@await Component.InvokeAsync("CategoriListForHomeRightBar")
+
+						<!-- widget popular posts -->
+						@await Component.InvokeAsync("MyWriteListHomePageWithCategory4")
+
+						<!-- widget post carousel -->
+						@await Component.InvokeAsync("MyWriteListHomePageWithCategory5", new { catId = 8 })
+
+					</div>
+
+				</div>
+
+			</div>
+		}
+
+	</div>
+</section>
+

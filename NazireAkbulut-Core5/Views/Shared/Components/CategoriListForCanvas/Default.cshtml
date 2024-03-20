@@ -1,0 +1,12 @@
+﻿
+@model List<Categori>
+
+<li>
+	<a href="#">Yazılar</a>
+	<ul class="submenu">
+		@foreach (var item in Model)
+		{
+			<li><a href="/MyWrite/Index/@item.CategoriId">@item.CategoriTitle</a></li>
+		}
+	</ul>
+</li>

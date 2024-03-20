@@ -1,0 +1,66 @@
+﻿@model List<FileType>
+
+@{
+	ViewData["Title"] = "AdFileTypeList";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	int sayac = 1;
+}
+
+<div class="col-lg-12">
+	<a href="/FileType/AdFileTypeAdd/" class="btn btn-success mb-3">Yeni Dosya Tipi Ekle</a>
+
+	<div class="card">
+		<div class="card-body">
+			<div class="card-title">
+				<h4>Dosya Tipi</h4>
+			</div>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Dosya Tipi</th>
+							<th>Dosya Tip Durumu</th>
+							<th>Güncelle</th>
+							<th>İşlem</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in Model)
+						{
+							<tr>
+								<th>@sayac</th>
+								<td>@item.FileTypeTitle</td>
+								<td>
+									@if (item.Status)
+									{
+										<span class="text-success">Aktif</span>
+									}
+									else
+									{
+										<span class="text-danger">Pasif</span>
+									}
+								</td>
+								<td>
+									<a href="/FileType/AdFileTypeUpdate/@item.FileTypeId" class="btn btn-warning">Güncelle</a>
+								</td>
+								<td>
+									@if (item.Status)
+									{
+										<a href="/FileType/AdFileTypeDoFalse/@item.FileTypeId" class="btn btn-danger">Pasif Yap</a>
+									}
+									else
+									{
+										<a href="/FileType/AdFileTypeDoTrue/@item.FileTypeId" class="btn btn-success">Aktif Yap</a>
+									}
+								</td>
+							</tr>
+							sayac++;
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+

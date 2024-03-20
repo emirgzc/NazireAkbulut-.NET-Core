@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+@await Html.PartialAsync("~/Views/AnaLayoutPartial/_HeadPartial.cshtml")
+
+<body>
+
+	<!-- preloader -->
+	@await Html.PartialAsync("~/Views/AnaLayoutPartial/_PreloaderPartial.cshtml")
+
+	<!-- site wrapper -->
+	<div class="site-wrapper">
+
+		<div class="main-overlay"></div>
+
+		<!-- header -->
+		@await Html.PartialAsync("~/Views/AnaLayoutPartial/_HeaderPartial.cshtml")
+
+		@RenderBody()		
+
+		<!-- footer -->
+		@await Html.PartialAsync("~/Views/AnaLayoutPartial/_FooterPartial.cshtml")
+
+	</div><!-- end site wrapper -->
+	<!-- search popup area -->
+	@await Html.PartialAsync("~/Views/AnaLayoutPartial/_SearchPopUpPartial.cshtml")
+
+	<!-- canvas menu -->
+	@await Html.PartialAsync("~/Views/AnaLayoutPartial/_CanvasMenuPartial.cshtml")
+
+	<!-- JAVA SCRIPTS -->
+	@await Html.PartialAsync("~/Views/AnaLayoutPartial/_ScriptPartial.cshtml")
+
+</body>
+</html>

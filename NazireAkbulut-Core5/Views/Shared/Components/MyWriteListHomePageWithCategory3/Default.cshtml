@@ -1,0 +1,48 @@
+﻿@model List<MyWrite>
+
+@if (Model.Count != 0)
+{
+	<div class="section-header">
+		<h3 class="section-title">@Model[0].Categori.CategoriTitle</h3>
+		<img src="~/katen/html/images/wave.svg" class="wave" alt="Nazire Akbulut" />
+	</div>
+	<div class="padding-30 rounded bordered">
+		<div class="row gy-5">
+			@foreach (var item in Model)
+			{
+				<div class="@(Model.Count > 1 ? "col-sm-6" : "col-sm-12")">
+					<!-- post large -->
+					<div class="post">
+						<div class="thumb rounded">
+							<a href="/MyWrite/Index/@item.CategoriId" class="category-badge position-absolute">@item.Categori.CategoriTitle</a>
+							<span class="post-format">
+								<i class="icon-picture"></i>
+							</span>
+							<a href="/MyWrite/MyWriteDetail/@item.MyWriteId">
+								<div class="inner">
+									<img src="@item.Image" alt="Nazire Akbulut" style="height:230px; width:-webkit-fill-available; object-fit:cover; border-radius:10px;" />
+								</div>
+							</a>
+						</div>
+						<ul class="meta list-inline mt-4 mb-0">
+							<li class="list-inline-item">
+								<a href="/Writer/Index/@item.WriterId">
+									<img src="@item.Writer.Image" class="author" alt="Nazire Akbulut" style="height:30px; width:30px; object-fit:cover; border-radius:50px;" />@item.Writer.Name @item.Writer.Surname
+								</a>
+							</li>
+							<li class="list-inline-item">
+								@(((DateTime)item.AddDate).ToString("dd MMMM yyyy"))
+
+							</li>
+						</ul>
+						<h5 class="post-title mb-3 mt-3">
+							<a href="/MyWrite/MyWriteDetail/@item.MyWriteId">@item.Title</a>
+						</h5>
+					</div>
+					<!-- post -->
+				</div>
+			}
+		</div>
+	</div>
+
+}

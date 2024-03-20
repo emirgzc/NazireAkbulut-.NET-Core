@@ -1,0 +1,61 @@
+﻿@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_AnaLayout.cshtml";
+}
+
+
+@await Html.PartialAsync("~/Views/Default/TopHeropartial.cshtml")
+
+<!-- section main content -->
+<section class="main-content">
+	<div class="container-xl">
+
+		<div class="row gy-4">
+
+			<div class="col-lg-8">
+
+				@await Component.InvokeAsync("MyWriteListHomePageWithCategori")
+
+				<div class="spacer" data-height="50"></div>
+
+				@await Component.InvokeAsync("MyWriteListHomePageWithCategory3")
+
+				<div class="spacer" data-height="50"></div>
+
+				@await Component.InvokeAsync("MyWriteListHomePageWithCategory2")
+
+				<div class="spacer" data-height="50"></div>
+
+				@await Component.InvokeAsync("MyWriteListHomeBig")
+
+				<div class="spacer" data-height="50"></div>
+
+			</div>
+
+			<div class="col-lg-4">
+
+				<!-- sidebar -->
+				<div class="sidebar">
+					<!-- widget about -->
+					@await Component.InvokeAsync("SocialMediaWithAboutInHome")
+
+					<!-- widget post carousel -->
+					@await Component.InvokeAsync("MyWriteListHomePageWithCategory5", new { catId = 5 })
+
+					<!-- widget categories -->
+					@await Component.InvokeAsync("CategoriListForHomeRightBar")
+
+					<!-- widget popular posts -->
+					@await Component.InvokeAsync("MyWriteListHomePageWithCategory4")
+
+					<!-- widget post carousel -->
+					@await Component.InvokeAsync("MyWriteListHomePageWithCategory5", new { catId = 8 })
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</section>

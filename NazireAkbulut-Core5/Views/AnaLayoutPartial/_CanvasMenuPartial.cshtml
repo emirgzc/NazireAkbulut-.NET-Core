@@ -1,0 +1,71 @@
+﻿<div class="canvas-menu d-flex align-items-end flex-column">
+	<!-- close button -->
+	<button type="button" class="btn-close" aria-label="Close"></button>
+
+	<!-- logo -->
+	<div class="logo">
+		<a class="navbar-brand" href="/Default/Index/">
+			<img src="~/katen/html/images/logo/logo.jpeg" alt="Nazire Akbulut" style="width:105px; height:55px; object-fit:cover;" />
+			<img src="~/katen/html/images/logo/logo2.jpeg" alt="Nazire Akbulut" style="height:55px; object-fit:cover;" />
+		</a>
+	</div>
+
+	<!-- menu -->
+	<nav>
+		<ul class="vertical-menu">
+			<li class="active"><a href="/Default/Index/">Ana Sayfa</a></li>
+
+			<li>
+				<a href="/About/Index/">Hakkımda</a>
+				<ul class="submenu">
+					<li><a href="/About/Index/">Hakkımda</a></li>
+
+					<li>
+						<a href="/FileNazire/Index/23">Özgeçmişim</a>
+					</li>
+				</ul>
+			</li>
+
+			@await Component.InvokeAsync("FileTypeListCanvas")
+
+			<li>
+				<a href="/MyWrite/Index/1">Makaleler</a>
+				<ul class="submenu">
+					<li><a href="/MyWrite/Index/1">MAKALELER</a></li>
+
+					<li>
+						<a href="/FileNazire/Index/28">(YAYINLANMIŞ) ULUSAL BİLDİRİLER</a>
+					</li>
+
+					<li><a href="/FileNazire/Index/29">ULUSLARARASI BİLDİRİLER</a></li>
+
+					<li><a href="/FileNazire/Index/26">İNDEKSLERDE YAPILAN YAYINLAR veya ULUSLARARASI DERGİ YAYINLARI</a></li>
+				</ul>
+			</li>
+
+			@await Component.InvokeAsync("CategoriListForCanvas")			
+			
+			<li>
+				<a href="/MyWrite/Index/4">Kitaplar</a>
+				<ul class="submenu">
+					<li><a href="/MyWrite/Index/4">Kitaplar</a></li>
+
+					<li>
+						<a href="/MyWrite/Index/5">Kitap Bölümleri</a>
+					</li>
+
+					<li><a  href="/MyWrite/Index/3">Editörlük</a></li>
+				</ul>
+			</li>
+
+			<li><a href="/FileNazire/Index/25">Çeviriler</a></li>
+
+			<li><a href="/Contact/Index/">İletişim</a></li>
+		</ul>
+	</nav>
+
+	<!-- social icons -->
+	<ul class="social-icons list-unstyled list-inline mb-0 mt-auto w-100">
+		@await Component.InvokeAsync("SocialMediaListForPublic")
+	</ul>
+</div>

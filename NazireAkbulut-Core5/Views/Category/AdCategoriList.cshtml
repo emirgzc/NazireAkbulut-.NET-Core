@@ -1,0 +1,68 @@
+﻿@model List<Categori>
+
+@{
+	ViewData["Title"] = "AdCategoriList";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	int sayac = 1;
+}
+
+
+
+<div class="col-lg-12">
+	<a href="/Category/AdCategoryAdd/" class="btn btn-success mb-3">Yeni Kategori Ekle</a>
+
+	<div class="card">
+		<div class="card-body">
+			<div class="card-title">
+				<h4>Kategoriler</h4>
+			</div>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Kategori İsmi</th>
+							<th>Kategori Durumu</th>
+							<th>Güncelle</th>
+							<th>İşlem</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in Model)
+						{
+							<tr>
+								<th>@sayac</th>
+								<td>@item.CategoriTitle</td>
+								<td>
+									@if (item.CategoriStatus)
+									{
+										<span class="text-success">Aktif</span>
+									}
+									else
+									{
+										<span class="text-danger">Pasif</span>
+									}
+								</td>
+								<td>
+									<a href="/Category/AdCategoryUpdate/@item.CategoriId" class="btn btn-warning">Güncelle</a>
+								</td>
+								<td>
+									@if (item.CategoriStatus)
+									{
+										<a href="/Category/AdCategoryDoFalse/@item.CategoriId" class="btn btn-danger">Pasif Yap</a>
+									}
+									else
+									{
+										<a href="/Category/AdCategoryDoTrue/@item.CategoriId" class="btn btn-success">Aktif Yap</a>
+									}
+								</td>
+							</tr>
+							sayac++;
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+

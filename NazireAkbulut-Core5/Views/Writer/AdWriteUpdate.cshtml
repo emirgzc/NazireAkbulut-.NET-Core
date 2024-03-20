@@ -1,0 +1,87 @@
+﻿@model WriterUpdateModel
+
+@{
+    ViewData["Title"] = "AdWriteUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row page-titles mx-0">
+	<div class="col p-md-0">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+			<li class="breadcrumb-item active"><a href="#">Yazar Güncelleme</a></li>
+		</ol>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Yazar Güncelleme</h4>
+				<div class="basic-form">
+					<form method="post" enctype="multipart/form-data" asp-controller="Writer" asp-action="AdWriteUpdate">
+						<input type="hidden" asp-for="WriterId">
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<label>Ad</label>
+								<input type="text" asp-for="Name" class="form-control" placeholder="Ad">
+							</div>
+							<div class="form-group col-md-12">
+								<label>Soyad</label>
+								<input type="text" asp-for="Surname" class="form-control" placeholder="Soyad">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label>Facebook Link</label>
+								<input type="text" asp-for="FacebookLink" class="form-control" placeholder="Facebook Link">
+							</div>
+							<div class="form-group col-md-6">
+								<label>Instagram Link</label>
+								<input type="text" asp-for="InstagramLink" class="form-control" placeholder="Instagram Link">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-4">
+								<label>Twitter Link</label>
+								<input type="text" asp-for="TwitterLink" class="form-control" placeholder="Twitter Link">
+							</div>
+							<div class="form-group col-md-4">
+								<label>Linkedin Link</label>
+								<input type="text" asp-for="LinkedinLink" class="form-control" placeholder="Linkedin Link">
+							</div>
+							<div class="form-group col-md-4">
+								<label>Youtube Link</label>
+								<input type="text" asp-for="YoutubeLink" class="form-control" placeholder="Youtube Link">
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Yazar İçin Kısa Yazı</label>
+							<textarea asp-for="ShortTrailer" class="form-control h-150px" rows="10" id="editorid"></textarea>
+						</div>
+						<div class="form-group">
+							<label>Yazar Görsel</label>
+							<div class="input-group">
+								<div class="custom-file">
+									<input type="file" asp-for="Image" class="custom-file-input">
+									<label class="custom-file-label">Resim Seç</label>
+								</div>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-dark">Güncelle</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+@section Scripts {
+	<script src="~/admin/theme/plugins/ckeditor/ckeditor.js"></script>
+	<script>
+		CKEDITOR.replace("editorid")
+	</script>
+}
