@@ -52,7 +52,7 @@ namespace NazireAkbulut_Core5.Controllers
         }
         public IActionResult AdCommentList(int page = 1)
         {
-            var values = _commentService.CommentListWithMyWrite().ToPagedList(page, 8);
+            var values = _commentService.CommentListWithMyWrite().ToPagedList(page, 10);
             return View(values);
         }
 		public IActionResult AdCommentListForMyWrite(int id)

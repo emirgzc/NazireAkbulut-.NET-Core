@@ -5445,6 +5445,7 @@ C:\Users\emirgzc\source\repos\NazireAkbulut-Core5\NazireAkbulut-Core5\obj\Releas
 C:\Users\emirgzc\source\repos\NazireAkbulut-Core5\NazireAkbulut-Core5\obj\Release\net5.0\PubTmp\Out\wwwroot\katen\html\minimal.html
 C:\Users\emirgzc\source\repos\NazireAkbulut-Core5\NazireAkbulut-Core5\obj\Release\net5.0\PubTmp\Out\wwwroot\katen\html\personal-alt.html
 C:\Users\emirgzc\source\repos\NazireAkbulut-Core5\NazireAkbulut-Core5\obj\Release\net5.0\PubTmp\Out\wwwroot\katen\html\personal.html
+C:\Users\emirgzc\source\repos\NazireAkbulut-Core5\NazireAkbulut-Core5\obj\Release\net5.0\PubTmp\Out\wwwroot\katen\html\uyari.pdf
 C:\Users\emirgzc\source\repos\NazireAkbulut-Core5\NazireAkbulut-Core5\obj\Release\net5.0\PubTmp\Out\wwwroot\katen\html\webfonts\fa-brands-400.eot
 C:\Users\emirgzc\source\repos\NazireAkbulut-Core5\NazireAkbulut-Core5\obj\Release\net5.0\PubTmp\Out\wwwroot\katen\html\webfonts\fa-brands-400.svg
 C:\Users\emirgzc\source\repos\NazireAkbulut-Core5\NazireAkbulut-Core5\obj\Release\net5.0\PubTmp\Out\wwwroot\katen\html\webfonts\fa-brands-400.ttf

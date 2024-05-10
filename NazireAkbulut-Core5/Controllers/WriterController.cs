@@ -27,12 +27,12 @@ namespace NazireAkbulut_Core5.Controllers
         public IActionResult Index(int id, int page = 1)
 		{
 			ViewBag.writerId = id;
-			var values = _myWriteService.MyWriteListByWriter(id).ToPagedList(page, 10);
+			var values = _myWriteService.MyWriteListByWriter(id).ToPagedList(page, 14);
 			return View(values);
 		}
 		public IActionResult AdWriterList(int page = 1)
 		{
-			var values = _writerService.TGetList().ToPagedList(page, 6);
+			var values = _writerService.TGetList().ToPagedList(page, 10);
 			return View(values);
 		}
 		[HttpGet]

@@ -28,7 +28,7 @@ namespace NazireAkbulut_Core5.Controllers
         [AllowAnonymous]
         public IActionResult Index(int id, int page = 1)
 		{
-			var values = _myWriteService.MyWriteListWithCategory(id).ToPagedList(page, 4);
+			var values = _myWriteService.MyWriteListWithCategory(id).ToPagedList(page, 10);
 			string categoryName = _myWriteService.MyWriteCategoryName(id);
 			ViewBag.categoryName = categoryName;
 			return View(values);
@@ -36,7 +36,7 @@ namespace NazireAkbulut_Core5.Controllers
         [AllowAnonymous]
         public IActionResult GetAllMyWrite(int page = 1)
 		{
-			var values = _myWriteService.MyWriteListGetAllWithStatus().ToPagedList(page, 8);
+			var values = _myWriteService.MyWriteListGetAllWithStatus().ToPagedList(page, 10);
 			return View(values);
 		}
         [AllowAnonymous]
@@ -48,7 +48,7 @@ namespace NazireAkbulut_Core5.Controllers
 		}
 		public IActionResult AdMyWriteList(int page = 1)
 		{
-			var values = _myWriteService.MyWriteListGetAll().ToPagedList(page, 6);
+			var values = _myWriteService.MyWriteListGetAll().ToPagedList(page, 12);
 			return View(values);
 		}
 		[HttpGet]
